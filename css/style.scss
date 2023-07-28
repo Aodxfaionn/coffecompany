@@ -1,0 +1,347 @@
+:root {
+    --bg-color: #f8e5d8;
+    --main-color: #eed8c9;
+    --color: #fff;
+    --add-color: #d6af93;
+    --coffee-bottom: 0%;
+    --water-bottom: 0;
+    --milk-bottom: 0;
+    --liquor-bottom: 0;
+    --whipped_cream-bottom: 0;
+    --milk_foam-bottom: 0;
+    --chocolate-bottom: 0;
+    --coffee-color: #3c302f;
+    --water-color: #b1dce2;
+    --milk-color: #f0ebe5;
+    --liquor-color: #fc8626;
+    --whipped_cream-color: #fceecb;
+    --milk_foam-color: #fceecb;
+    --chocolate-color: #391e09;
+}
+
+@font-face {
+    font-family: "PT Sans Narrow";
+    src: local("PT Sans Narrow"), local(".PTSans-Narrow"), url("./fonts/PTSans-Narrow.woff2") format("woff2"),
+        url("./fonts/PTSans-Narrow.woff") format("woff"), url("./fonts/PTSans-Narrow.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PT Sans Narrow";
+    src: local("PT Sans Narrow Bold"), local("PTSans-NarrowBold"),
+        url("./fonts/PTSans-NarrowBold.woff2") format("woff2"),
+        url("./fonts/PTSans-NarrowBold.woff") format("woff"),
+        url("./fonts/PTSans-NarrowBold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: local("Lato Hairline"), local("Lato-Hairline"), url("Lato-Hairline.woff2") format("woff2"),
+        url("./fonts/Lato-Hairline.woffLato-Hairline.woff") format("woff"),
+        url("./fonts/Lato-Hairline.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "PT Sans Narrow";
+    font-weight: 400;
+    font-size: 16px;
+    width: 100vw;
+    background-color: #f8e5d8;
+}
+
+li {
+    list-style: none;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+.title {
+    font-family: "Lato";
+    font-size: 4em;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.slider {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    min-width: 950px;
+    height: 100vh;
+}
+
+.colorSide {
+    height: 100%;
+    width: 35%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+    &__block {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--color);
+    }
+    & p {
+        font-size: 2em;
+        text-align: center;
+        padding: 0 10px;
+    }
+}
+
+.main-slide {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 35%;
+    width: 65%;
+    transition: 0.5s;
+    & > div {
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.slider button {
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    z-index: 10;
+    background-color: var(--color);
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    & svg {
+        fill: rgb(71, 65, 65);
+        width: 25px;
+        transition: 0.3s;
+    }
+    &:hover svg {
+        fill: rgb(187, 186, 186);
+    }
+}
+
+.slider-btns__down {
+    transform: translateX(-100%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.slider-btns__up {
+    transform: translateY(-100%);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.choose-drink {
+    margin: 0 auto 30px;
+    width: 950px;
+    min-width: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    & .title {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    & li {
+        transition: 0.3s;
+        width: 200px;
+        height: 40px;
+        border: 2px solid var(--add-color);
+        background-color: var(--main-color);
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+            background-color: var(--add-color);
+        }
+        &.active {
+            background-color: var(--add-color);
+        }
+    }
+}
+
+.drink {
+    position: relative;
+    width: 700px;
+    height: 500px;
+    border: 2px solid var(--add-color);
+    background-color: var(--main-color);
+    border-radius: 5px;
+    margin: 0 auto;
+    &__title {
+        font-size: 2em;
+        text-align: center;
+        height: 50px;
+        font-weight: 400;
+        padding-top: 10px;
+    }
+}
+
+.cup {
+    width: 45%;
+    min-width: 300px;
+    height: 80%;
+    margin: 20px auto;
+    border-radius: 0px 0px 70px 70px;
+    position: relative;
+    background-color: var(--color);
+    z-index: 10;
+}
+
+.cup:after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: calc(100% - 1vw);
+    width: 15%;
+    height: 25%;
+    border: 1vw solid var(--color);
+    border-radius: 20%;
+}
+
+.fill {
+    position: absolute;
+    z-index: 100;
+    left: 30%;
+    bottom: 8%;
+    width: 40%;
+    min-width: 280px;
+    height: 75%;
+    overflow: hidden;
+    border-radius: 0px 0px 70px 70px;
+    background-color: var(--main-color);
+}
+
+.fill.empty {
+    --coffee-bottom: -100%;
+    --water-bottom: -100%;
+    --milk-bottom: -100%;
+    --liquor-bottom: -100%;
+    --whipped_cream-bottom: -100%;
+    --milk_foam-bottom: -100%;
+    --chocolate-bottom: -100%;
+}
+
+.fill div {
+    position: absolute;
+    width: 100%;
+    transition: all 1s linear;
+    color: #817f75;
+    display: flex;
+    justify-content: center;
+    height: 0;
+    overflow: hidden;
+    font-size: 1.5vw;
+    height: 100%;
+    bottom: -100%;
+    box-sizing: border-box;
+}
+
+.fill.empty.americano {
+    --water-bottom: 0;
+    --coffee-bottom: -60%;
+}
+.fill.empty.capuccino {
+    --coffee-bottom: -65%;
+    --milk-bottom: -35%;
+    --milk_foam-bottom: 0;
+}
+.fill.empty.espresso {
+    --coffee-bottom: -60%;
+}
+.fill.empty.latte {
+    --coffee-bottom: -60%;
+    --milk-bottom: -20%;
+    --milk_foam-bottom: 0%;
+}
+.fill.empty.corretto {
+    --coffee-bottom: -45%;
+    --liquor-bottom: -25%;
+}
+.fill.empty.macchiato {
+    --coffee-bottom: -70%;
+    --milk_foam-bottom: 0;
+}
+.fill.empty.mocha {
+    --coffee-bottom: -60%;
+    --chocolate-bottom: -40%;
+    --milk-bottom: -20%;
+    --whipped_cream-bottom: 0%;
+}
+.fill.empty.ristretto {
+    --coffee-bottom: -80%;
+}
+
+div.chocolate {
+    background: var(--chocolate-color);
+    bottom: var(--chocolate-bottom);
+    z-index: 6;
+}
+div.coffee {
+    background: var(--coffee-color);
+    bottom: var(--coffee-bottom);
+
+    z-index: 7;
+}
+div.liquor {
+    background: var(--liquor-color);
+    bottom: var(--liquor-bottom);
+    z-index: 4;
+}
+div.milk_foam {
+    background: var(--milk_foam-color);
+    bottom: var(--milk_foam-bottom);
+    z-index: 5;
+}
+
+div.milk {
+    background: var(--milk-color);
+    bottom: var(--milk-bottom);
+    z-index: 6;
+}
+div.water {
+    background: var(--water-color);
+    bottom: var(--water-bottom);
+}
+div.whipped_cream {
+    background: var(--whipped_cream-color);
+    bottom: var(--whipped_cream-bottom);
+    z-index: 4;
+}
+
+@media (max-width: 1000px) {
+    .options {
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
